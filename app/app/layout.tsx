@@ -26,10 +26,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden flex flex-col bg-slate-50`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden flex flex-col`}
       >
         {children}
-        <Toaster />
+        <Toaster 
+          position="bottom-right"
+          toastOptions={{
+            classNames: {
+              toast: 'glass border-border/50 shadow-xl',
+              title: 'font-display font-semibold',
+              description: 'text-muted-foreground',
+            }
+          }}
+        />
       </body>
     </html>
   );
