@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -13,15 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 export const metadata: Metadata = {
-  title: "Chic Color Picker",
-  description: "Modern color extraction for the web",
+  title: "Color Picker",
+  description: "Extract colors from any website",
 };
 
 export default function RootLayout({
@@ -30,21 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased h-screen overflow-hidden flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Toaster 
-          position="bottom-right"
-          toastOptions={{
-            classNames: {
-              toast: 'glass border-border/50 shadow-xl',
-              title: 'font-display font-semibold',
-              description: 'text-muted-foreground',
-            }
-          }}
-        />
+        <Toaster />
       </body>
     </html>
   );
